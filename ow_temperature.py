@@ -43,10 +43,10 @@ class TemperatureMonitor(instrument_logger.Instrument):
     def getmeasurement(self, name: str) -> str:
         """Required by Instrument"""
         if (name == self.name + '.Temperature.F'):
-             return str(self.readTemp())
+             return "{:.3f}".format(self.readTemp())
     
     def readTemp(self):
-        with open(self._uri,'rb') as file:
+        with open(self._uri,'r') as file:
             text = file.read()
             ''' The text output from the probe looks like this:
                 4a 01 4b 46 7f ff 06 10 f7 : crc=f7 YES
