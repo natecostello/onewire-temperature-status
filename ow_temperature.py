@@ -43,7 +43,7 @@ class TemperatureMonitor(instrument_logger.Instrument):
     def getmeasurement(self, name: str) -> str:
         """Required by Instrument"""
         if (name == self.name + '.Temperature.F'):
-             return "{:.3f}".format(self.readTemp())
+             return "{:.1f}".format(self.readTemp())
     
     def readTemp(self):
         with open(self._uri,'r') as file:
